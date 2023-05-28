@@ -1,0 +1,54 @@
+#################################
+# download and install blast+
+#################################
+
+# downloading from FTP site and unpack
+tar xczf ncbi-blast2.14.0+x64.linux.tar.gz 
+
+# executables are in nbci/bin folder
+# put in new folder blastEXEC
+# add this folder to $PATH
+mkdir blastExec 
+cp * ../balstExec
+nano ~/.bashrc
+export PATH="$PATH:$HOME/BIT06_comparative/blastExec"
+
+
+##########################################
+## set up swissprot database for blast+
+##########################################
+
+# download protein dataset and gunzit
+wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+gunzip uniprot_sprot.fasta.gz
+
+# create local database of the sequences
+makeblastdb -in uniprot_sprot.fasta -out uniprot_sprot -dbtype prot
+
+
+###########################
+# Query local database
+###########################
+
+# search mouse HBB1 in local swissprot db (all defaults)
+blastp -query hbb1_mus.fasta -db uniprot_sprot
+
+# change default output
+	# output to html file
+	# adjust word size (default 3)
+	# change scoring matrix (default blosum62)
+	
+blastp -query hbb1_mus.fasta -db uniprot_sprot -html -out hbb1Swissprot.html -word_size 5 -matrix PAM250 
+
+# selecting by organism requires installation of ED Direct
+# install ED Direct 
+sh -c "$(curl -fsSL https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh)"
+echo "export PATH=/home/guest/edirect:\${PATH}" >> ${HOME}/.bashrc
+export PATH=${HOME}/edirect:${PATH}
+
+#### NOT WORKING ###
+# restriction to 1 species based upon taxid
+blastp -query hbb1_mus.fasta -db uniprot_sprot -html -out hbb1Swissprot.html -word_size 5 -matrix PAM250 -taxids 9606
+blastp -query hbb1_mus.fasta -db uniprot_sprot -html -out hbb1Swissprot.html -word_size 5 -matrix PAM250 -window_masker_taxid 9606
+
+
