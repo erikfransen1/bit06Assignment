@@ -9,7 +9,7 @@ tar xczf ncbi-blast2.14.0+x64.linux.tar.gz
 # put in new folder blastEXEC
 # add this folder to $PATH
 mkdir blastExec 
-cp * ../balstExec
+cp * ../blastExec
 nano ~/.bashrc
 export PATH="$PATH:$HOME/BIT06_comparative/blastExec"
 
@@ -18,7 +18,7 @@ export PATH="$PATH:$HOME/BIT06_comparative/blastExec"
 ## set up swissprot database for blast+
 ##########################################
 
-# download protein dataset and gunzit
+# download protein dataset and gunzip
 wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 gunzip uniprot_sprot.fasta.gz
 
