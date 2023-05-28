@@ -1,0 +1,33 @@
+4# create conda environment
+conda create --yes --name assigBit06
+
+# onstall emboss
+conda install --yes -cbioconda emboss
+
+# translate cDNA into protein in all 6 frames
+# download cDNA from alpha globin 1 (acc nr NM_000558.5) --> fasta file
+mv sequence.fasta hba1.fasta
+
+# activate conda environment
+conda activate assigBit06
+
+# translate in all 6 reading frames ans export to fasta
+transeq hba1.fasta amir.pep -frame=6
+mv amir.prep translation6frame.fasta
+
+# visualize ORF in 6 reading fframes
+sixpack hba1.fasta
+outfile = nm_000558.5.sixpack and nm_000558.5.fasta
+
+# optimal global pairwise alignment : needle
+# retrieve 2 protein sequences
+# hemoglobin subunit beta 1 in mus musculus(NP_001265090.1) and human (NP_000509 )
+mv sequence.fasta hbb1_mus.fasta  
+needle hbb1_human.fasta hbb1_mus.fasta
+# defaults for gap opening (10.0) and gap extension (0.5)
+output globalAligHbb.needle
+
+# local alignment (smith waterman)
+water hbb1_human.fasta hbb1_mus.fasta
+# defaults for gap opening en extension
+outputfile : localAligHbb.water
