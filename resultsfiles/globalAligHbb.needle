@@ -1,0 +1,44 @@
+########################################
+# Program: needle
+# Rundate: Sun 28 May 2023 17:43:42
+# Commandline: needle
+#    [-asequence] hbb1_human.fasta
+#    [-bsequence] hbb1_mus.fasta
+#    -outfile globalAligHbb.needle
+# Align_format: srspair
+# Report_file: globalAligHbb.needle
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: NP_000509.1
+# 2: NP_001265090.1
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 147
+# Identity:     118/147 (80.3%)
+# Similarity:   132/147 (89.8%)
+# Gaps:           0/147 ( 0.0%)
+# Score: 638.0
+# 
+#
+#=======================================
+
+NP_000509.1        1 MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLS     50
+                     |||||..||:||:.||||||.||||||||||||||||||||:|:||||||
+NP_001265090.      1 MVHLTDAEKAAVSCLWGKVNSDEVGGEALGRLLVVYPWTQRYFDSFGDLS     50
+
+NP_000509.1       51 TPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVD    100
+                     :..|:|||.|||||||||:.||:|||.|||:||||||:||||||||||||
+NP_001265090.     51 SASAIMGNAKVKAHGKKVITAFNDGLNHLDSLKGTFASLSELHCDKLHVD    100
+
+NP_000509.1      101 PENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH    147
+                     |||||||||::|.||.||.||:|||..|||:||||||||.|||||||
+NP_001265090.    101 PENFRLLGNMIVIVLGHHLGKDFTPAAQAAFQKVVAGVATALAHKYH    147
+
+
+#---------------------------------------
+#---------------------------------------
